@@ -1,0 +1,15 @@
+{
+  "name": "firebase-product-crud-app",
+  "version": "1.0.0",
+  "description": "A web application for creating, editing, and viewing products using Firebase.",
+  "main": "public/scripts/main.js",
+  "scripts": {
+    "start": "live-server public",
+    "build": "echo 'Build step not defined'"
+  },
+  "dependencies": {
+    "firebase": "^9.0.0"
+  },
+  "author": "Your Name",
+  "license": "MIT"
+}
