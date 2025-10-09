@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprende - Simulador Náutico-Eléctrico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/aprende.css">
+</head>
+<body>
+    <!-- Componente de encabezado personalizado -->
+    <custom-header></custom-header>
+
+    <!-- Sección de Contenido Educativo -->
+    <main class="aprende-container">
+        <h1 class="section-title">Aprende sobre Sistemas Eléctricos Náuticos</h1>
+        
+        <!-- Tarjeta 1: Potencia Eléctrica -->
+        <section class="concept-card">
+            <div class="concept-header">
+                <i class="fas fa-bolt"></i>
+                <h2>¿Qué es la Potencia Eléctrica?</h2>
+            </div>
+            <div class="concept-content">
+                <div class="concept-text">
+                    <p>La potencia eléctrica es la tasa a la que se consume o se transfiere energía eléctrica en un circuito. En el contexto náutico, es fundamental para entender cómo se distribuye y gestiona la energía a bordo de un buque.</p>
+                    <p><strong>Fórmula básica:</strong> P = V × I</p>
+                    <ul>
+                        <li>P = Potencia (en vatios, W)</li>
+                        <li>V = Voltaje (en voltios, V)</li>
+                        <li>I = Corriente (en amperios, A)</li>
+                    </ul>
+                    <p>En los buques, la potencia se mide comúnmente en kilovatios (kW) o caballos de fuerza (HP).</p>
+                </div>
+                <div class="concept-image">
+                    <img src="../../assets/potencia-electrica.svg" alt="Diagrama de potencia eléctrica">
+                    <p class="image-caption">Figura 1: Representación de la potencia eléctrica en un circuito simple</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarjeta 2: Generadores a Bordo -->
+        <section class="concept-card">
+            <div class="concept-header">
+                <i class="fas fa-generator"></i>
+                <h2>Generadores a Bordo</h2>
+            </div>
+            <div class="concept-content">
+                <div class="concept-text">
+                    <p>Los generadores son el corazón del sistema eléctrico de un buque, convirtiendo energía mecánica en energía eléctrica.</p>
+                    <h3>Componentes principales:</h3>
+                    <ul>
+                        <li><strong>Motor primario:</strong> Generalmente un motor diésel que proporciona la energía mecánica.</li>
+                        <li><strong>Alternador:</strong> Convierte la energía mecánica en energía eléctrica.</li>
+                        <li><strong>Sistema de regulación:</strong> Mantiene el voltaje y la frecuencia estables.</li>
+                        <li><strong>Sistema de refrigeración:</strong> Evita el sobrecalentamiento del generador.</li>
+                    </ul>
+                    <p>En la mayoría de los buques, hay varios generadores que pueden operar en paralelo para satisfacer la demanda de energía.</p>
+                </div>
+                <div class="concept-image">
+                    <img src="../../assets/generador-nautico.svg" alt="Diagrama de generador a bordo">
+                    <p class="image-caption">Figura 2: Esquema básico de un generador a bordo</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tarjeta 3: Circuito de Distribución -->
+        <section class="concept-card">
+            <div class="concept-header">
+                <i class="fas fa-sitemap"></i>
+                <h2>Circuito de Distribución</h2>
+            </div>
+            <div class="concept-content">
+                <div class="concept-text">
+                    <p>El sistema de distribución eléctrica de un buque es responsable de llevar la energía desde los generadores hasta los consumidores de manera segura y eficiente.</p>
+                    <h3>Elementos clave:</h3>
+                    <ul>
+                        <li><strong>Cuadros de distribución:</strong> Contienen interruptores y protecciones.</li>
+                        <li><strong>Barras colectoras (busbars):</strong> Distribuyen la energía a los diferentes circuitos.</li>
+                        <li><strong>Protecciones:</strong> Interruptores automáticos, fusibles y relés de protección.</li>
+                        <li><strong>Transformadores:</strong> Ajustan los niveles de voltaje según sea necesario.</li>
+                    </ul>
+                    <p>Los sistemas modernos utilizan configuraciones redundantes para garantizar la continuidad del suministro eléctrico.</p>
+                </div>
+                <div class="concept-image">
+                    <img src="../../assets/distribucion-electrica.svg" alt="Diagrama de circuito de distribución">
+                    <p class="image-caption">Figura 3: Esquema de un circuito de distribución típico en buques</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Práctica -->
+        <section class="practica">
+            <h2>¡Pon a prueba tus conocimientos!</h2>
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    <h3>¿Cuál es la unidad básica de potencia eléctrica?</h3>
+                    <div class="quiz-options">
+                        <button class="quiz-option">Amperio (A)</button>
+                        <button class="quiz-option">Vatio (W)</button>
+                        <button class="quiz-option">Ohmio (Ω)</button>
+                        <button class="quiz-option">Voltio (V)</button>
+                    </div>
+                </div>
+                <div class="quiz-feedback">
+                    <p class="feedback-text"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Componente de pie de página personalizado -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script type="module" src="../components/header.js"></script>
+    <script type="module" src="../components/footer.js"></script>
+    <script src="../js/aprende.js"></script>
+</body>
+</html>

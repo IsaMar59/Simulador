@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas Náuticas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/herramientas.css">
+    <style>
+        /* Asegurar que el contenido no quede oculto detrás del header fijo */
+        body {
+            padding-top: 70px;
+        }
+        
+        /* Asegurar que los enlaces del menú tengan el estilo correcto */
+        .nav-links li a {
+            color: white !important;
+        }
+        
+        .nav-links li a:hover,
+        .nav-links li a.active {
+            color: var(--secondary-color) !important;
+        }
+    </style>
+</head>
+<body>
+    <custom-header></custom-header>
+
+    <div class="tools-container">
+        <h1><i class="fas fa-tools"></i> Herramientas Náuticas</h1>
+        
+        <!-- Conversor de Unidades -->
+        <div class="tool-card">
+            <h2><i class="fas fa-exchange-alt"></i> Conversor de Potencia</h2>
+            <div class="converter">
+                <div class="input-group">
+                    <input type="number" id="inputValue" placeholder="Ingrese valor" step="0.01">
+                    <select id="fromUnit">
+                        <option value="kW">kW</option>
+                        <option value="HP">HP</option>
+                        <option value="CV">CV</option>
+                    </select>
+                    <span>a</span>
+                    <select id="toUnit">
+                        <option value="kW">kW</option>
+                        <option value="HP">HP</option>
+                        <option value="CV">CV</option>
+                    </select>
+                    <button id="convertBtn">Convertir</button>
+                </div>
+                <div id="result" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Calculadora Trifásica -->
+        <div class="tool-card">
+            <h2><i class="fas fa-bolt"></i> Cálculo de Potencia Trifásica</h2>
+            <div class="trifasica">
+                <div class="input-group">
+                    <label for="voltage">Tensión (V):</label>
+                    <input type="number" id="voltage" placeholder="Ej: 400">
+                </div>
+                <div class="input-group">
+                    <label for="current">Corriente (A):</label>
+                    <input type="number" id="current" placeholder="Ej: 10">
+                </div>
+                <div class="input-group">
+                    <label for="powerFactor">Factor de Potencia (0-1):</label>
+                    <input type="number" id="powerFactor" min="0" max="1" step="0.01" value="0.9">
+                </div>
+                <button id="calculate3Phase">Calcular</button>
+                <div id="powerResult" class="result"></div>
+            </div>
+        </div>
+
+        <!-- Simulador de Consumo -->
+        <div class="tool-card">
+            <h2><i class="fas fa-chart-line"></i> Simulador de Consumo</h2>
+            <div class="simulator">
+                <div class="input-group">
+                    <label for="consumers">Número de consumidores:</label>
+                    <input type="number" id="consumers" min="1" max="20" value="5">
+                </div>
+                <div id="consumerInputs"></div>
+                <div class="input-group">
+                    <label for="hours">Horas de operación:</label>
+                    <input type="number" id="hours" min="1" value="24">
+                </div>
+                <button id="simulateBtn">Simular Consumo</button>
+                <div id="simulationResult" class="result"></div>
+                <canvas id="consumptionChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Botón de Ayuda Flotante -->
+    <button id="helpButton" class="help-button" title="Ayuda">
+        <i class="fas fa-question-circle"></i>
+    </button>
+
+    <!-- Modal de Ayuda -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2><i class="fas fa-question-circle"></i> Ayuda - Herramientas Náuticas</h2>
+            
+            <div class="help-section">
+                <h3><i class="fas fa-exchange-alt"></i> Conversor de Potencia</h3>
+                <p>Esta herramienta te permite convertir entre diferentes unidades de potencia comúnmente utilizadas en sistemas náuticos:</p>
+                <ul>
+                    <li><strong>kW (kilovatios)</strong> - Unidad estándar de potencia en el sistema métrico</li>
+                    <li><strong>HP (caballos de fuerza)</strong> - Unidad de potencia del sistema inglés</li>
+                    <li><strong>CV (caballos de vapor)</strong> - Similar al HP pero basado en el sistema métrico</li>
+                </ul>
+                <p><strong>Cómo usar:</strong>
+                    <ol>
+                        <li>Ingresa el valor numérico a convertir</li>
+                        <li>Selecciona la unidad de origen (desde qué unidad quieres convertir)</li>
+                        <li>Selecciona la unidad de destino (a qué unidad quieres convertir)</li>
+                        <li>Haz clic en "Convertir" para ver el resultado</li>
+                    </ol>
+                </p>
+            </div>
+
+            <div class="help-section">
+                <h3><i class="fas fa-bolt"></i> Cálculo de Potencia Trifásica</h3>
+                <p>Calcula la potencia activa en un sistema eléctrico trifásico equilibrado, común en instalaciones náuticas.</p>
+                <p><strong>Parámetros requeridos:</strong>
+                    <ul>
+                        <li><strong>Tensión (V):</strong> Voltaje de línea a línea en voltios (ej: 400V)</li>
+                        <li><strong>Corriente (A):</strong> Corriente de línea en amperios</li>
+                        <li><strong>Factor de Potencia:</strong> Relación entre la potencia activa y aparente (valor entre 0 y 1)</li>
+                    </ul>
+                </p>
+                <p>La fórmula utilizada es: <code>P = √3 × V × I × cos(φ)</code></p>
+                <p>Donde:<br>
+                    - P = Potencia activa (W)<br>
+                    - V = Tensión de línea (V)<br>
+                    - I = Corriente de línea (A)<br>
+                    - cos(φ) = Factor de potencia
+                </p>
+            </div>
+
+            <div class="help-section">
+                <h3><i class="fas fa-chart-line"></i> Simulador de Consumo</h3>
+                <p>Simula el consumo de energía de múltiples cargas eléctricas a bordo durante un período determinado.</p>
+                <p><strong>Cómo usar:</strong>
+                    <ol>
+                        <li>Especifica el número de consumidores (dispositivos eléctricos)</li>
+                        <li>Ingresa la potencia de cada consumidor en vatios (W) o kilovatios (kW)</li>
+                        <li>Especifica las horas de operación</li>
+                        <li>Haz clic en "Simular Consumo" para ver los resultados</li>
+                    </ol>
+                </p>
+                <p>La herramienta mostrará:
+                    <ul>
+                        <li>Consumo total de energía en kilovatios-hora (kWh)</li>
+                        <li>Costo estimado (si se especifica el costo por kWh)</li>
+                        <li>Una representación gráfica de la distribución del consumo</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="help-tips">
+                <h3><i class="fas fa-lightbulb"></i> Consejos Prácticos</h3>
+                <div class="tips-grid">
+                    <div class="tip">
+                        <i class="fas fa-bolt"></i>
+                        <p>Para cálculos precisos, verifica siempre las especificaciones del fabricante de los equipos.</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <p>Mantén el factor de potencia por encima de 0.9 para una operación eficiente.</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-battery-three-quarters"></i>
+                        <p>Considera la capacidad de tus baterías al planificar el consumo eléctrico.</p>
+                    </div>
+                    <div class="tip">
+                        <i class="fas fa-sun"></i>
+                        <p>Para ahorrar energía, aprovecha al máximo la iluminación natural.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="../components/header.js"></script>
+    <script>
+        // Funcionalidad del Modal de Ayuda
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('helpModal');
+            const btn = document.getElementById('helpButton');
+            const span = document.getElementsByClassName('close-modal')[0];
+
+            // Abrir modal al hacer clic en el botón de ayuda
+            btn.onclick = function() {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Evitar scroll del body
+            }
+
+            // Cerrar modal al hacer clic en la X
+            span.onclick = function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = ''; // Restaurar scroll
+            }
+
+            // Cerrar modal al hacer clic fuera del contenido
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restaurar scroll
+                }
+            }
+
+            // Cerrar con tecla ESC
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = ''; // Restaurar scroll
+                }
+            });
+        });
+    </script>
+    <script src="../js/herramientas.js"></script>
+</body>
+</html>

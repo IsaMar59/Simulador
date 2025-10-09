@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" viewBox="0 0 500 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Fondo del océano -->
+    <path d="M0 250C0 250 100 260 150 250C200 240 300 230 350 240C400 250 500 260 500 260V300H0V250Z" fill="#1E90FF" fill-opacity="0.3"/>
+    
+    <!-- Olas del océano -->
+    <path d="M0 250C50 240 100 245 150 248C200 251 250 248 300 252C350 256 400 266 450 258C500 250 500 250 500 250" stroke="#1E90FF" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Casco del barco -->
+    <path d="M100 250C150 200 200 180 250 180C300 180 350 200 400 250" stroke="#1A1A2E" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M100 250L400 250" stroke="#1A1A2E" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Estructura superior del barco -->
+    <rect x="150" y="150" width="200" height="30" rx="5" fill="#1A1A2E"/>
+    <rect x="170" y="100" width="160" height="50" rx="5" fill="#1A1A2E"/>
+    <rect x="200" y="70" width="100" height="30" rx="5" fill="#1A1A2E"/>
+    
+    <!-- Chimenea -->
+    <rect x="250" y="50" width="30" height="30" rx="3" fill="#1A1A2E"/>
+    <rect x="240" y="80" width="50" height="20" rx="3" fill="#1A1A2E"/>
+    
+    <!-- Ventanas -->
+    <rect x="180" y="110" width="20" height="30" rx="2" fill="#FFD700"/>
+    <rect x="220" y="110" width="20" height="30" rx="2" fill="#FFD700"/>
+    <rect x="260" y="110" width="20" height="30" rx="2" fill="#FFD700"/>
+    <rect x="300" y="110" width="20" height="30" rx="2" fill="#FFD700"/>
+    
+    <!-- Luces de navegación -->
+    <circle cx="110" cy="230" r="5" fill="#FF0000"/>
+    <circle cx="390" cy="230" r="5" fill="#00FF00"/>
+    
+    <!-- Detalles decorativos -->
+    <line x1="120" y1="200" x2="140" y2="200" stroke="#FFD700" stroke-width="2"/>
+    <line x1="130" y1="190" x2="130" y2="210" stroke="#FFD700" stroke-width="2"/>
+    
+    <!-- Olas pequeñas -->
+    <path d="M50 270C60 265 70 267 80 270" stroke="#1E90FF" stroke-width="2" stroke-linecap="round"/>
+    <path d="M420 270C430 265 440 267 450 270" stroke="#1E90FF" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- Estrellas en el cielo -->
+    <circle cx="50" cy="30" r="1" fill="white"/>
+    <circle cx="80" cy="50" r="1" fill="white"/>
+    <circle cx="120" cy="20" r="1" fill="white"/>
+    <circle cx="200" cy="40" r="1.5" fill="white"/>
+    <circle cx="250" cy="10" r="1" fill="white"/>
+    <circle cx="300" cy="30" r="1" fill="white"/>
+    <circle cx="350" cy="20" r="1.5" fill="white"/>
+    <circle cx="400" cy="40" r="1" fill="white"/>
+    <circle cx="450" cy="25" r="1" fill="white"/>
+</svg>
