@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca del Proyecto - Simulador Náutico-Eléctrico</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acerca.css">
+</head>
+<body>
+    <!-- Componente de encabezado personalizado -->
+    <custom-header></custom-header>
+
+    <!-- Contenido Principal -->
+    <main class="acerca-container">
+        <header class="acerca-header">
+            <h1>Acerca del Proyecto</h1>
+            <div class="header-divider"></div>
+        </header>
+
+        <section class="acerca-content">
+            <article class="proyecto-info">
+                <h2>El Simulador Náutico-Eléctrico</h2>
+                <div class="proyecto-descripcion">
+                    <p>Este simulador fue desarrollado por <strong>Isaura Ríos</strong> como proyecto final del programa Supérate, inspirado en la Ingeniería Náutica en Electrotecnia. Su objetivo es representar de manera didáctica cómo funcionan los sistemas eléctricos a bordo de un buque.</p>
+                    <p>La herramienta busca facilitar el aprendizaje de conceptos fundamentales de electrotecnia aplicada al ámbito marítimo, ofreciendo una experiencia interactiva que combina teoría y práctica en un entorno simulado.</p>
+                </div>
+            </article>
+
+            <div class="acerca-grid">
+                <section class="perfil-card">
+                    <div class="perfil-img">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3>Isaura Ríos</h3>
+                    <p class="cargo">Desarrolladora & Estudiante de Ingeniería</p>
+                    <div class="perfil-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Ciudad, País</p>
+                        <p><i class="fas fa-graduation-cap"></i> Estudiante de Ingeniería Náutica</p>
+                        <p><i class="fas fa-heart"></i> Apasionada por la tecnología y la navegación</p>
+                    </div>
+                    <button id="contactoBtn" class="btn-contacto">
+                        <i class="fas fa-envelope"></i> Contactar
+                    </button>
+                </section>
+
+                <section class="motivacion-card">
+                    <h3><i class="fas fa-lightbulb"></i> Motivación</h3>
+                    <p>Mi interés por la ingeniería náutica y los sistemas eléctricos me llevó a desarrollar este proyecto, buscando crear una herramienta educativa que facilite la comprensión de conceptos complejos de manera visual e interactiva.</p>
+                    
+                    <h4>Metas profesionales:</h4>
+                    <ul class="metas-lista">
+                        <li><i class="fas fa-check-circle"></i> Contribuir al desarrollo de sistemas eléctricos más eficientes en el sector marítimo</li>
+                        <li><i class="fas fa-check-circle"></i> Promover la educación técnica de calidad</li>
+                        <li><i class="fas fa-check-circle"></i> Innovar en soluciones sostenibles para la industria náutica</li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <section class="tecnologias">
+            <h3>Tecnologías utilizadas</h3>
+            <div class="tecnologias-grid">
+                <div class="tecnologia">
+                    <i class="fab fa-html5"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="tecnologia">
+                    <i class="fab fa-css3-alt"></i>
+                    <span>CSS3</span>
+                </div>
+                <div class="tecnologia">
+                    <i class="fab fa-js"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="tecnologia">
+                    <i class="fab fa-git-alt"></i>
+                    <span>Git</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección del Juego de Barco -->
+        <section class="ship-game-section">
+            <h2><i class="fas fa-gamepad"></i> Mini Juego: Navega el Barco</h2>
+            <div class="game-container">
+                <div class="game-info">
+                    <p>Usa las teclas de flecha para navegar. Recoge los contenedores (🟦) y evita los obstáculos (💥).</p>
+                    <div class="game-stats">
+                        <div>Puntos: <span id="score">0</span></div>
+                        <div>Vidas: <span id="lives">3</span></div>
+                        <button id="startGame" class="btn-game">Comenzar Juego</button>
+                    </div>
+                </div>
+                <div class="game-canvas-container">
+                    <canvas id="shipGame" width="800" height="400"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Componente de pie de página personalizado -->
+    <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script type="module" src="../components/header.js"></script>
+    <script type="module" src="../components/footer.js"></script>
+    <script src="../js/acerca.js"></script>
+</body>
+</html>

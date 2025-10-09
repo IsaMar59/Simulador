@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Náutico-Eléctrico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+</head>
+<body>
+    <!-- Componente de encabezado personalizado -->
+    <custom-header></custom-header>
+
+    <!-- Sección Hero -->
+    <header id="inicio" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Simulador Náutico-Eléctrico</h1>
+                <p>Una herramienta interactiva para estudiantes y futuros ingenieros náuticos</p>
+                <a href="#simulador" class="btn btn-primary">Comenzar simulación</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/ship-silhouette.svg" alt="Buque de carga" class="ship-svg">
+            </div>
+        </div>
+        <div class="wave"></div>
+    </header>
+
+    <!-- Sección de Módulos -->
+    <section id="modulos" class="section">
+        <div class="container">
+            <h2 class="section-title">Módulos Interactivos</h2>
+            <div class="modules-grid">
+                <div class="module-card" id="conversor">
+                    <div class="module-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Conversor de Unidades</h3>
+                    <p>Convierte entre diferentes unidades eléctricas como kW, HP, CV y más.</p>
+                </div>
+                <div class="module-card" id="potencia">
+                    <div class="module-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Cálculo de Potencia</h3>
+                    <p>Simula y calcula la potencia total de los generadores a bordo.</p>
+                </div>
+                <div class="module-card" id="diagrama">
+                    <div class="module-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3>Diagrama Eléctrico</h3>
+                    <p>Explora el sistema eléctrico del buque de forma interactiva.</p>
+                </div>
+                <div class="module-card" id="fallos">
+                    <div class="module-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Simulación de Fallos</h3>
+                    <p>Aprende a manejar fallos en el sistema eléctrico del buque.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Componente de pie de página personalizado -->
+    <custom-footer></custom-footer>
+
+    <!-- Cargar los componentes personalizados -->
+    <script type="module" src="./components/header.js"></script>
+    <script type="module" src="./components/footer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

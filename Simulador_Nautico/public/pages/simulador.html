@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Náutico-Eléctrico</title>
+    <link rel="stylesheet" href="../css/simulador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Componente de encabezado personalizado -->
+    <custom-header></custom-header>
+
+    <!-- Botón de Ayuda Flotante -->
+    <button id="helpButton" class="help-button" title="Ayuda">
+        <i class="fas fa-question-circle"></i>
+    </button>
+
+    <!-- Modal de Ayuda -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-info-circle"></i> Guía del Simulador Náutico-Eléctrico</h2>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="converter">Conversor</button>
+                    <button class="tab-button" data-tab="generators">Generadores</button>
+                    <button class="tab-button" data-tab="loads">Cargas</button>
+                    <button class="tab-button" data-tab="simulation">Simulación</button>
+                </div>
+                
+                <div class="tab-content">
+                    <div id="converter-tab" class="tab-pane active">
+                        <h3><i class="fas fa-exchange-alt"></i> Conversor de Potencia</h3>
+                        <p>Esta herramienta te permite convertir entre diferentes unidades de potencia utilizadas en sistemas eléctricos marinos:</p>
+                        <ul>
+                            <li><strong>kW (kilovatios)</strong>: Unidad estándar de potencia eléctrica</li>
+                            <li><strong>HP (Horse Power)</strong>: Caballos de fuerza, común en motores</li>
+                            <li><strong>CV (Caballos de Vapor)</strong>: Similar al HP pero con una conversión ligeramente diferente</li>
+                        </ul>
+                        <p><strong>Cómo usar:</strong> Ingresa un valor en kW y haz clic en "Convertir" para ver los equivalentes en HP y CV.</p>
+                    </div>
+                    
+                    <div id="generators-tab" class="tab-pane">
+                        <h3><i class="fas fa-bolt"></i> Control de Generadores</h3>
+                        <p>En esta sección puedes controlar los generadores del sistema eléctrico del buque:</p>
+                        <ul>
+                            <li><strong>Generador Principal 1</strong>: 500 kW</li>
+                            <li><strong>Generador Principal 2</strong>: 500 kW</li>
+                            <li><strong>Generador de Emergencia</strong>: 250 kW</li>
+                            <li><strong>Generador Auxiliar</strong>: 150 kW</li>
+                        </ul>
+                        <p><strong>Indicadores de estado:</strong></p>
+                        <ul>
+                            <li><span class="status-demo" style="background-color: #28a745;"></span> Generador activo</li>
+                            <li><span class="status-demo" style="background-color: #6c757d;"></span> Generador inactivo</li>
+                        </ul>
+                        <p>La potencia total disponible se muestra en la parte superior y se actualiza automáticamente.</p>
+                    </div>
+                    
+                    <div id="loads-tab" class="tab-pane">
+                        <h3><i class="fas fa-project-diagram"></i> Diagrama de Cargas</h3>
+                        <p>Representa las diferentes cargas eléctricas del buque y su estado actual:</p>
+                        <ul>
+                            <li><strong>Iluminación</strong>: 150 kW (prioridad media)</li>
+                            <li><strong>Bomba de Agua</strong>: 250 kW (prioridad alta)</li>
+                            <li><strong>Radar</strong>: 100 kW (prioridad alta)</li>
+                            <li><strong>Propulsión</strong>: 800 kW (prioridad baja)</li>
+                        </ul>
+                        <p><strong>Estados de las cargas:</strong></p>
+                        <ul>
+                            <li><span class="status-demo" style="background-color: #28a745;"></span> Carga activa con energía suficiente</li>
+                            <li><span class="status-demo" style="background-color: #ffc107;"></span> Carga activa con potencia reducida</li>
+                            <li><span class="status-demo" style="background-color: #dc3545;"></span> Carga activa sin energía</li>
+                            <li><span class="status-demo" style="background-color: #6c757d;"></span> Carga inactiva</li>
+                        </ul>
+                        <p>Haz clic en una carga para activarla o desactivarla.</p>
+                    </div>
+                    
+                    <div id="simulation-tab" class="tab-pane">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Simulación de Fallos</h3>
+                        <p>Esta función te permite simular fallos en el sistema eléctrico:</p>
+                        <ul>
+                            <li><strong>Simular Fallo</strong>: Desactiva aleatoriamente uno de los generadores activos durante 10 segundos.</li>
+                            <li><strong>Reiniciar Sistema</strong>: Vuelve al estado inicial del simulador.</li>
+                        </ul>
+                        <p><strong>Estados del sistema:</strong></p>
+                        <ul>
+                            <li><span class="status-demo" style="background-color: #28a745;"></span> Estable: Potencia suficiente para todas las cargas activas</li>
+                            <li><span class="status-demo" style="background-color: #ffc107;"></span> Advertencia: Potencia reducida (menos del 30% de margen)</li>
+                            <li><span class="status-demo" style="background-color: #dc3545;"></span> Crítico: Potencia insuficiente para las cargas activas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-close">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="simulator-header">
+            <h1><i class="fas fa-bolt"></i> Simulador Náutico-Eléctrico</h1>
+            <p>Herramienta interactiva para el análisis de sistemas eléctricos en buques</p>
+        </header>
+
+        <!-- Sección de Conversor de Potencia -->
+        <section class="converter-section">
+            <h2><i class="fas fa-exchange-alt"></i> Conversor de Potencia</h2>
+            <div class="converter-container">
+                <div class="input-group">
+                    <input type="number" id="kwInput" placeholder="Ingrese kW" step="0.01" min="0">
+                    <button onclick="convertirPotencia()" class="btn-convert">
+                        <i class="fas fa-sync-alt"></i> Convertir
+                    </button>
+                </div>
+                <div class="results">
+                    <div class="result-box">
+                        <label>HP (Horse Power)</label>
+                        <div id="hpResult" class="result">-</div>
+                    </div>
+                    <div class="result-box">
+                        <label>CV (Caballos de Vapor)</label>
+                        <div id="cvResult" class="result">-</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Generadores -->
+        <section class="generators-section">
+            <h2><i class="fas fa-bolt"></i> Control de Generadores</h2>
+            <div class="power-display">
+                <div class="power-total">
+                    <span>Potencia Total:</span>
+                    <span id="totalPower">0 kW</span>
+                </div>
+                <div class="power-status" id="powerStatus">
+                    <span class="status-dot"></span>
+                    <span>Estado: <span id="statusText">Crítico</span></span>
+                </div>
+            </div>
+            
+            <div class="generators-grid" id="generatorsList">
+                <!-- Los generadores se agregarán dinámicamente con JavaScript -->
+            </div>
+            
+            <div class="simulation-controls">
+                <button onclick="simularFallo()" class="btn-simulate" id="simulateBtn">
+                    <i class="fas fa-exclamation-triangle"></i> Simular Fallo
+                </button>
+                <button onclick="reiniciarSistema()" class="btn-reset">
+                    <i class="fas fa-redo"></i> Reiniciar Sistema
+                </button>
+            </div>
+        </section>
+
+        <!-- Sección de Cargas -->
+        <section class="loads-section">
+            <h2><i class="fas fa-project-diagram"></i> Diagrama de Cargas</h2>
+            <div class="loads-container">
+                <div class="load-item" id="iluminacion">
+                    <div class="load-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="load-info">
+                        <h3>Iluminación</h3>
+                        <p>Consumo: <span>150 kW</span></p>
+                        <div class="load-status">
+                            <span class="status">Estado: <span>Apagado</span></span>
+                            <span class="status-dot"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="load-item" id="bomba">
+                    <div class="load-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="load-info">
+                        <h3>Bomba de Agua</h3>
+                        <p>Consumo: <span>250 kW</span></p>
+                        <div class="load-status">
+                            <span class="status">Estado: <span>Apagado</span></span>
+                            <span class="status-dot"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="load-item" id="radar">
+                    <div class="load-icon">
+                        <i class="fas fa-satellite-dish"></i>
+                    </div>
+                    <div class="load-info">
+                        <h3>Radar</h3>
+                        <p>Consumo: <span>100 kW</span></p>
+                        <div class="load-status">
+                            <span class="status">Estado: <span>Apagado</span></span>
+                            <span class="status-dot"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="load-item" id="propulsion">
+                    <div class="load-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <div class="load-info">
+                        <h3>Propulsión</h3>
+                        <p>Consumo: <span>800 kW</span></p>
+                        <div class="load-status">
+                            <span class="status">Estado: <span>Apagado</span></span>
+                            <span class="status-dot"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <custom-footer></custom-footer>
+
+    <!-- Scripts -->
+    <script type="module" src="../components/header.js"></script>
+    </div>
+
+    <script src="../js/simulador.js"></script>
+</body>
+</html>
