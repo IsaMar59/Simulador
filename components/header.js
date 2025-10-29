@@ -211,10 +211,10 @@ class CustomHeader extends HTMLElement {
                     </a>
                     <ul class="nav-links">
                         <li><a href="/index.html" class="active">Inicio</a></li>
-                        <li><a href="/pages/simulador.html">Simulador</a></li>
-                        <li><a href="/pages/herramientas.html">Herramientas</a></li>
-                        <li><a href="/pages/aprende.html">Aprende</a></li>
-                        <li><a href="/pages/acerca.html">Acerca de</a></li>
+                        <li><a href="../pages/simulador.html">Simulador</a></li>
+                        <li><a href="../pages/herramientas.html">Herramientas</a></li>
+                        <li><a href="../pages/aprende.html">Aprende</a></li>
+                        <li><a href="../pages/acerca.html">Acerca de</a></li>
                     </ul>
                     <div class="hamburger">
                         <i class="fas fa-bars"></i>
