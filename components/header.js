@@ -205,16 +205,16 @@ class CustomHeader extends HTMLElement {
             
             <nav class="navbar">
                 <div class="container">
-                    <a href="/Simulador_Nautico/public/index.html" class="logo">
+                    <a href="/index.html" class="logo">
                         <i class="fas fa-bolt"></i>
                         <span>Simulador Náutico</span>
                     </a>
                     <ul class="nav-links">
-                        <li><a href="/Simulador_Nautico/public/index.html" class="active">Inicio</a></li>
-                        <li><a href="/Simulador_Nautico/public/pages/simulador.html">Simulador</a></li>
-                        <li><a href="/Simulador_Nautico/public/pages/herramientas.html">Herramientas</a></li>
-                        <li><a href="/Simulador_Nautico/public/pages/aprende.html">Aprende</a></li>
-                        <li><a href="/Simulador_Nautico/public/pages/acerca.html">Acerca de</a></li>
+                        <li><a href="/index.html" class="active">Inicio</a></li>
+                        <li><a href="/pages/simulador.html">Simulador</a></li>
+                        <li><a href="/pages/herramientas.html">Herramientas</a></li>
+                        <li><a href="/pages/aprende.html">Aprende</a></li>
+                        <li><a href="/pages/acerca.html">Acerca de</a></li>
                     </ul>
                     <div class="hamburger">
                         <i class="fas fa-bars"></i>
