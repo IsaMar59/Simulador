@@ -96,24 +96,6 @@ Chart.js 4.4.0
 
 ---
 
-## 📁 Estructura de Archivos
-
-```
-ElectroShip/
-├── index.html                    # Landing page
-├── system.html                   # Simulador principal
-├── README.md                     # Este archivo
-├── FEATURES.md                   # Documentación detallada
-└── assets/
-    ├── css/
-    │   ├── styles.css           # Estilos index (landing)
-    │   └── system.css           # Estilos simulador (680+ líneas)
-    └── js/
-        ├── scroll-animations.js  # Scroll triggers (Intersection Observer)
-        └── electrical-system.js  # Lógica completa (600+ líneas)
-```
-
----
 
 ## 🎯 Casos de Uso
 
