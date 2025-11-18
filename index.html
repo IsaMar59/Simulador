@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroShip - Simulación Lógica de Distribución Eléctrica Naval</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">ElectroShip</div>
+            <nav class="nav">
+                <a class="nav-link" href="/index.html">Inicio</a>
+                <a class="nav-link btn-simulator-header" href="/pages/system.html">Sistema</a>
+                <a class="nav-link btn-simulator-header" href="/pages/simulador.html">Simulador</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="banner-content hero-grid">
+            <div class="hero-left">
+                <div class="eyebrow muted">Simulación &middot; Ingeniería Náutica</div>
+                <h1 class="banner-title">Donde la ingeniería se encuentra con la lógica</h1>
+                <p class="banner-subtitle">Explora cómo se energiza un buque: generadores, barras de distribución y cargas, todo desde una interfaz pensada para ingeniería.</p>
+                <div class="hero-cta">
+                    <a href="/pages/simulador.html" class="btn btn-primary">Entrar al Simulador</a>
+                    <a href="/pages/system.html" class="btn btn-ghost">Ver el sistema</a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="device-panel" aria-hidden="true">
+                    <div class="panel-topbar">
+                        <span class="dot dot-1"></span>
+                        <span class="dot dot-2"></span>
+                        <span class="dot dot-3"></span>
+                    </div>
+                    <div class="panel-screen">
+                        <div class="screen-content">
+                            <div class="metric">GEN-1</div>
+                            <div class="metric small">Estado: <span class="muted">Standby</span></div>
+                            <div class="meter">
+                                <div class="meter-fill" style="width:38%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Proyecto: Descripción + Módulos -->
+        <section class="project-description">
+            <div class="section-header">
+                <div class="eyebrow">PROYECTO</div>
+                <h2>¿De Qué Trata ElectroShip?</h2>
+                <p class="section-lead">ElectroShip es un simulador lógico que modela generación, distribución y consumo eléctrico en embarcaciones reales. No simula física avanzada, sino la lógica operacional: cómo responden los sistemas ante cambios, cargas y fallas.</p>
+            </div>
+
+            <!-- Módulos / Tecnologías -->
+            <div id="project-cards" class="tech-grid">
+                <article class="card" aria-labelledby="card-html">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3 4.5H21" stroke="#1E90FF" stroke-width="1.6" stroke-linecap="round"/>
+                            <path d="M8 8L3 12L8 16" stroke="#B5BECF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 8L21 12L16 16" stroke="#B5BECF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4 id="card-html">HTML</h4>
+                    <p>Estructura semántica y accesible. Base modular y escalable para la interfaz de simulación.</p>
+                </article>
+
+                <article class="card" aria-labelledby="card-css">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="4" width="18" height="16" rx="2" stroke="#1E90FF" stroke-width="1.6"/>
+                            <path d="M7 8H17" stroke="#B5BECF" stroke-width="1.4" stroke-linecap="round"/>
+                            <path d="M7 12H14" stroke="#B5BECF" stroke-width="1.4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4 id="card-css">CSS</h4>
+                    <p>Paleta técnica e inspirada en paneles SCADA. Microinteracciones sutiles y elegantes.</p>
+                </article>
+
+                <article class="card" aria-labelledby="card-js">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 8l3.5 4L7 16" stroke="#B5BECF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 8l-3.5 4L17 16" stroke="#B5BECF" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                            <rect x="3" y="3" width="18" height="18" rx="3" stroke="#1E90FF" stroke-width="1.6"/>
+                        </svg>
+                    </div>
+                    <h4 id="card-js">JS</h4>
+                    <p>Motor lógico y sincronización de UI. Simulación de estados, eventos y respuestas en tiempo real.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Por Qué Importa -->
+        <section class="why-choose">
+            <div class="section-header text-center">
+                <div class="eyebrow">CAPACIDADES</div>
+                <h2>¿Por Qué ElectroShip?</h2>
+            </div>
+            <div class="why-grid">
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="8" stroke="#1BC7B1" stroke-width="1.6"/>
+                            <path d="M9 12l2 2 4-4" stroke="#1BC7B1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4>Simulación Realista</h4>
+                    <p>Modela comportamientos de sistemas eléctricos navales con precisión lógica, no física simplificada.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="6" width="16" height="11" rx="2" stroke="#1BC7B1" stroke-width="1.6"/>
+                            <path d="M7 11h10M7 15h7" stroke="#1BC7B1" stroke-width="1.4" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Interfaz Intuitiva</h4>
+                    <p>Panel visual inspirado en sistemas SCADA reales: claro, directo, profesional e intuitivo.</p>
+                </article>
+                <article class="why-card">
+                    <div class="why-icon" aria-hidden="true">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2v6m0 4v6M6 8h12m-12 4H6m12 0h0" stroke="#1BC7B1" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h4>Código Limpio</h4>
+                    <p>Arquitectura modular, semántica HTML accesible y CSS escalable. Fácil de entender y mantener.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Final -->
+        <section class="cta-final">
+            <div class="cta-inner">
+                <h3>Listo para explorar el sistema?</h3>
+                <p>Interactúa con generadores, barras de distribución y cargas como si estuvieras frente a un panel naval real.</p>
+                <a href="/pages/simulador.html" class="btn btn-primary btn-lg">Entrar al Simulador</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 ElectroShip · Desarrollado por Isaura Ríos</p>
+        <p>Simulación lógica — Ingeniería Náutica en Electrotecnia</p>
+    </footer>
+    <script src="/js/scroll-animations.js"></script>
+</body>
+</html>

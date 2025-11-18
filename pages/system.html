@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElectroShip - Sistema Eléctrico Naval Interactivo</title>
+    <link rel="stylesheet" href="/css/system.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">ElectroShip</a>
+            <nav class="nav">
+                <a class="nav-link" href="/index.html">Inicio</a>
+                <a class="nav-link active" href="/pages/system.html">Sistema</a>
+                <a class="nav-link" href="/pages/simulador.html">Simulador</a>
+                <button class="nav-help-btn" id="help-trigger" title="Mostrar guía interactiva">
+                    <span>❓</span> Ayuda
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="system-container">
+        <!-- Hero Panel -->
+        <section class="system-hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1>Control del Sistema Eléctrico Naval</h1>
+                    <p>Simula, convierte y optimiza la distribución eléctrica de una embarcación en tiempo real.</p>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <div class="power-indicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text">Sistema activo</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulation Modes & Charts -->
+        <section class="module module-dashboard">
+            <div class="module-header">
+                <div class="module-eyebrow">Panel de Control</div>
+                <h2>Modos de Simulación y Monitoreo</h2>
+                <p class="module-lead">Selecciona un modo de operación predefini​do o monitorea la potencia en tiempo real.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <!-- Simulation Modes -->
+                <div class="simulation-modes">
+                    <h3>Modos Predefini​dos</h3>
+                    <div class="mode-buttons">
+                        <button class="btn btn-mode active" data-mode="normal">⚡ Normal</button>
+                        <button class="btn btn-mode" data-mode="emergencia">🚨 Emergencia</button>
+                        <button class="btn btn-mode" data-mode="peak">📈 Peak Load</button>
+                        <button class="btn btn-mode" data-mode="eficiencia">♻️ Eficiencia</button>
+                    </div>
+                    <p class="mode-description" id="mode-description">Sistema operando en modo normal con carga estable.</p>
+                </div>
+
+                <!-- Sound Toggle -->
+                <div class="sound-control">
+                    <button class="btn btn-sound" id="sound-toggle" title="Activar/desactivar sonidos">
+                        🔊 Sonidos: ON
+                    </button>
+                </div>
+
+                <!-- Export Button -->
+                <div class="export-control">
+                    <button class="btn btn-export" id="export-logs">
+                        💾 Exportar Registro
+                    </button>
+                </div>
+            </div>
+
+            <!-- Power Chart -->
+            <div class="charts-container">
+                <div class="chart-wrapper">
+                    <h3>Potencia en Tiempo Real (últimos 30 segundos)</h3>
+                    <canvas id="powerChart"></canvas>
+                </div>
+            </div>
+        </section>
+        <section class="module module-converter">
+            <div class="module-header">
+                <div class="module-eyebrow">Herramienta 1</div>
+                <h2>Conversor de Unidades Eléctricas</h2>
+                <p class="module-lead">Convierte entre unidades comunes en sistemas navales: potencia, voltaje, corriente y resistencia.</p>
+            </div>
+
+            <div class="converter-grid">
+                <!-- Power Converter -->
+                <div class="converter-card">
+                    <h3>Potencia</h3>
+                    <div class="input-group">
+                        <label>kW</label>
+                        <input type="number" id="kw-input" placeholder="Ingresa kW" value="10">
+                    </div>
+                    <div class="conversion-arrow">⇅</div>
+                    <div class="output-group">
+                        <div class="output-item">
+                            <label>HP (Horse Power)</label>
+                            <output id="hp-output">13.41</output>
+                        </div>
+                        <div class="output-item">
+                            <label>CV (Caballos de Vapor)</label>
+                            <output id="cv-output">13.60</output>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voltage & Current (P = V × I) -->
+                <div class="converter-card">
+                    <h3>Fórmula: P = V × I</h3>
+                    <div class="input-group">
+                        <label>Voltaje (V)</label>
+                        <input type="number" id="voltage-input" placeholder="Voltaje" value="440">
+                    </div>
+                    <div class="input-group">
+                        <label>Corriente (A)</label>
+                        <input type="number" id="current-input" placeholder="Corriente" value="20">
+                    </div>
+                    <div class="conversion-arrow">⇓</div>
+                    <div class="output-group">
+                        <div class="output-item">
+                            <label>Potencia (kW)</label>
+                            <output id="power-output">8.80</output>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ohm's Law -->
+                <div class="converter-card">
+                    <h3>Ley de Ohm: V = I × R</h3>
+                    <div class="input-group">
+                        <label>Corriente (A)</label>
+                        <input type="number" id="ohm-current" placeholder="Corriente" value="10">
+                    </div>
+                    <div class="input-group">
+                        <label>Resistencia (Ω)</label>
+                        <input type="number" id="ohm-resistance" placeholder="Resistencia" value="44">
+                    </div>
+                    <div class="conversion-arrow">⇓</div>
+                    <div class="output-group">
+                        <div class="output-item">
+                            <label>Voltaje (V)</label>
+                            <output id="ohm-voltage">440.00</output>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 2: Power Calculation -->
+        <section class="module module-power">
+            <div class="module-header">
+                <div class="module-eyebrow">Herramienta 2</div>
+                <h2>Cálculo de Potencia del Sistema</h2>
+                <p class="module-lead">Activa o desactiva generadores y visualiza la disponibilidad total de energía.</p>
+            </div>
+
+            <div class="power-system">
+                <div class="generators-panel">
+                    <h3>Generadores Disponibles</h3>
+                    <div class="generators-grid">
+                        <div class="generator-toggle" data-gen-id="1">
+                            <input type="checkbox" id="gen-1" checked>
+                            <label for="gen-1">
+                                <span class="gen-name">GEN-1</span>
+                                <span class="gen-power">500 kW</span>
+                            </label>
+                            <div class="gen-status" aria-hidden="true">
+                                <span class="status-led on"></span>
+                            </div>
+                        </div>
+
+                        <div class="generator-toggle" data-gen-id="2">
+                            <input type="checkbox" id="gen-2" checked>
+                            <label for="gen-2">
+                                <span class="gen-name">GEN-2</span>
+                                <span class="gen-power">500 kW</span>
+                            </label>
+                            <div class="gen-status" aria-hidden="true">
+                                <span class="status-led on"></span>
+                            </div>
+                        </div>
+
+                        <div class="generator-toggle" data-gen-id="3">
+                            <input type="checkbox" id="gen-3">
+                            <label for="gen-3">
+                                <span class="gen-name">GEN-3</span>
+                                <span class="gen-power">500 kW</span>
+                            </label>
+                            <div class="gen-status" aria-hidden="true">
+                                <span class="status-led off"></span>
+                            </div>
+                        </div>
+
+                        <div class="generator-toggle" data-gen-id="4">
+                            <input type="checkbox" id="gen-4">
+                            <label for="gen-4">
+                                <span class="gen-name">GEN-4</span>
+                                <span class="gen-power">500 kW</span>
+                            </label>
+                            <div class="gen-status" aria-hidden="true">
+                                <span class="status-led off"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="power-display">
+                    <div class="power-metric">
+                        <label>Potencia Disponible</label>
+                        <output id="available-power" class="power-value">1000 kW</output>
+                    </div>
+                    <div class="power-metric">
+                        <label>Carga Actual</label>
+                        <output id="current-load" class="power-value load">850 kW</output>
+                    </div>
+                    <div class="power-metric">
+                        <label>Capacidad Disponible</label>
+                        <output id="available-capacity" class="power-value capacity">150 kW</output>
+                    </div>
+                </div>
+
+                <div class="load-bar">
+                    <div class="load-bar-inner">
+                        <div class="load-fill" id="load-fill" style="width: 85%"></div>
+                    </div>
+                    <p class="load-text">Uso: <span id="load-percentage">85%</span></p>
+                </div>
+
+                <div id="load-warning" class="load-warning" style="display:none;">
+                    ⚠️ <strong>Advertencia:</strong> La capacidad disponible es baja. Considera activar más generadores.
+                </div>
+            </div>
+        </section>
+
+        <!-- Module 3: Interactive Diagram -->
+        <section class="module module-diagram">
+            <div class="module-header">
+                <div class="module-eyebrow">Herramienta 3</div>
+                <h2>Diagrama del Sistema Eléctrico</h2>
+                <p class="module-lead">Visualiza el flujo de energía desde los generadores hasta las cargas principales.</p>
+            </div>
+
+            <div class="system-diagram">
+                <!-- Generators -->
+                <div class="diagram-section generators-section">
+                    <h4>Generadores</h4>
+                    <div class="diagram-nodes">
+                        <div class="node generator-node" data-node="gen-1">
+                            <div class="node-icon">⚡</div>
+                            <div class="node-label">GEN-1</div>
+                            <div class="node-info" style="display:none;">
+                                <p><strong>Voltaje:</strong> 440V</p>
+                                <p><strong>Estado:</strong> <span class="info-status">Activo</span></p>
+                                <p><strong>Potencia:</strong> 500 kW</p>
+                            </div>
+                        </div>
+                        <div class="node generator-node" data-node="gen-2">
+                            <div class="node-icon">⚡</div>
+                            <div class="node-label">GEN-2</div>
+                            <div class="node-info" style="display:none;">
+                                <p><strong>Voltaje:</strong> 440V</p>
+                                <p><strong>Estado:</strong> <span class="info-status">Activo</span></p>
+                                <p><strong>Potencia:</strong> 500 kW</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distribution Bus -->
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-section distribution-section">
+                    <h4>Barra de Distribución</h4>
+                    <div class="diagram-nodes">
+                        <div class="node bus-node" data-node="bus-main">
+                            <div class="node-icon">📊</div>
+                            <div class="node-label">DIST-PRINCIPAL</div>
+                            <div class="node-info" style="display:none;">
+                                <p><strong>Voltaje:</strong> 440V</p>
+                                <p><strong>Carga:</strong> 850 kW</p>
+                                <p><strong>Estado:</strong> <span class="info-status">Normal</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loads -->
+                <div class="diagram-arrow">→</div>
+                <div class="diagram-section loads-section">
+                    <h4>Cargas Principales</h4>
+                    <div class="diagram-nodes">
+                        <div class="node load-node" data-node="load-pumps">
+                            <div class="node-icon">💧</div>
+                            <div class="node-label">Bombas</div>
+                            <div class="node-info" style="display:none;">
+                                <p><strong>Consumo:</strong> 400 kW</p>
+                                <p><strong>Estado:</strong> <span class="info-status">Operativo</span></p>
+                            </div>
+                        </div>
+                        <div class="node load-node" data-node="load-lights">
+                            <div class="node-icon">💡</div>
+                            <div class="node-label">Iluminación</div>
+                            <div class="node-info" style="display:none;">
+                                <p><strong>Consumo:</strong> 150 kW</p>
+                                <p><strong>Estado:</strong> <span class="info-status">Operativo</span></p>
+                            </div>
+                        </div>
+                        <div class="node load-node" data-node="load-radar">
+                            <div class="node-icon">📡</div>
+                            <div class="node-label">Radar</div>
+                            <div class="node-info" style="display:none;">
+                                <p><strong>Consumo:</strong> 300 kW</p>
+                                <p><strong>Estado:</strong> <span class="info-status">Operativo</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="diagram-hint">💡 Haz clic en cada nodo para ver más información.</p>
+        </section>
+
+        <!-- Module 4: Fault Simulation -->
+        <section class="module module-fault">
+            <div class="module-header">
+                <div class="module-eyebrow">Herramienta 4</div>
+                <h2>Simulación de Fallos</h2>
+                <p class="module-lead">Simula fallos de generadores y observa cómo el sistema se redistribuye.</p>
+            </div>
+
+            <div class="fault-simulator">
+                <div class="fault-controls">
+                    <h3>Inyectar Fallo</h3>
+                    <div class="fault-buttons">
+                        <button class="btn btn-fault" data-fault="gen-1">Fallar GEN-1</button>
+                        <button class="btn btn-fault" data-fault="gen-2">Fallar GEN-2</button>
+                        <button class="btn btn-fault" data-fault="gen-3">Fallar GEN-3</button>
+                        <button class="btn btn-fault" data-fault="gen-4">Fallar GEN-4</button>
+                    </div>
+                    <button class="btn btn-reset" id="reset-fault">↻ Restaurar Sistema</button>
+                </div>
+
+                <div class="fault-log">
+                    <h3>Registro de Eventos</h3>
+                    <div id="fault-events" class="events-list">
+                        <p class="event-info">✓ Sistema operativo. Aguardando eventos...</p>
+                    </div>
+                </div>
+
+                <div id="fault-alerts" class="fault-alerts">
+                    <!-- Alerts will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Index -->
+        <section class="cta-return">
+            <a href="index.html" class="btn btn-secondary">← Volver al Inicio</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>© 2025 ElectroShip · Desarrollado por Isaura Ríos</p>
+        <p>Simulador Interactivo — Ingeniería Náutica en Electrotecnia</p>
+    </footer>
+
+    <!-- Modal de Ayuda Interactivo -->
+    <div id="help-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>📖 Guía del Simulador ElectroShip</h2>
+                <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+            </div>
+            
+            <div class="modal-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="general">General</button>
+                    <button class="tab-btn" data-tab="modulos">Módulos</button>
+                    <button class="tab-btn" data-tab="caracteristicas">Features</button>
+                    <button class="tab-btn" data-tab="consejos">Tips</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- TAB 1: GENERAL -->
+                    <div id="tab-general" class="tab-pane active">
+                        <h3>🎯 ¿Qué es ElectroShip?</h3>
+                        <p>ElectroShip es un simulador interactivo profesional que te permite:</p>
+                        <ul>
+                            <li><strong>🔌 Aprender</strong> conceptos de distribución eléctrica naval</li>
+                            <li><strong>⚡ Simular</strong> diferentes escenarios de potencia</li>
+                            <li><strong>🎮 Experimentar</strong> inyectando fallos y observando consecuencias</li>
+                            <li><strong>📊 Monitorear</strong> en tiempo real con gráficos</li>
+                        </ul>
+
+                        <h3>💡 Primeros Pasos</h3>
+                        <ol>
+                            <li>Abre el módulo <strong>Dashboard</strong> (arriba en la página)</li>
+                            <li>Selecciona un <strong>Modo de Simulación</strong> (Normal, Emergencia, Peak, Eficiencia)</li>
+                            <li>Observa cómo cambian los <strong>generadores</strong> y la <strong>carga</strong></li>
+                            <li>Mira el <strong>gráfico en tiempo real</strong> que se actualiza cada 2 segundos</li>
+                        </ol>
+
+                        <h3>🎧 Activa el Audio</h3>
+                        <p>Encontrarás un botón <strong>🔊 Sonidos</strong> en el dashboard. Actívalo para escuchar diferentes tonos:</p>
+                        <ul>
+                            <li>🟦 <strong>Azul:</strong> Modo activado</li>
+                            <li>🟨 <strong>Amarillo:</strong> Advertencia (déficit de potencia)</li>
+                            <li>🔴 <strong>Rojo:</strong> Alerta crítica (múltiples fallos)</li>
+                        </ul>
+                    </div>
+
+                    <!-- TAB 2: MÓDULOS -->
+                    <div id="tab-modulos" class="tab-pane">
+                        <h3>📊 Módulo 0: Dashboard</h3>
+                        <p>Panel de control principal con gráficos real-time y modos preconfigurados.</p>
+                        <ul>
+                            <li>Selecciona un modo → Se actualiza todo automáticamente</li>
+                            <li>Gráfico de potencia: línea azul (disponible) + amarilla (actual)</li>
+                            <li>Exporta eventos a CSV con un click</li>
+                        </ul>
+
+                        <h3>⚡ Módulo 1: Conversor</h3>
+                        <p>Convierte unidades de potencia en tiempo real.</p>
+                        <ul>
+                            <li><strong>kW ↔ HP:</strong> Multiplica por 1.341</li>
+                            <li><strong>kW ↔ CV:</strong> Multiplica por 1.360</li>
+                            <li><strong>P = V × I:</strong> Calcula potencia desde voltaje e intensidad</li>
+                            <li><strong>Ley de Ohm (V = I × R):</strong> Calcula voltaje</li>
+                        </ul>
+
+                        <h3>🔌 Módulo 2: Potencia del Sistema</h3>
+                        <p>Gestiona 4 generadores de 500 kW cada uno.</p>
+                        <ul>
+                            <li>Activa/desactiva generadores → Potencia disponible cambia</li>
+                            <li>Barra de carga visual: Verde &lt;70% | Amarilla 70-85% | Roja &gt;85%</li>
+                            <li>Alerta si capacidad disponible &lt; 100 kW</li>
+                        </ul>
+
+                        <h3>📊 Módulo 3: Diagrama</h3>
+                        <p>Visualiza el flujo de energía de forma interactiva.</p>
+                        <ul>
+                            <li>Haz <strong>click en cada nodo</strong> para ver detalles</li>
+                            <li>Flujo: Generadores → Distribución → Cargas</li>
+                            <li>Útil para entender la estructura del sistema</li>
+                        </ul>
+
+                        <h3>⚠️ Módulo 4: Simulador de Fallos</h3>
+                        <p>Inyecta fallos y observa las consecuencias automáticamente.</p>
+                        <ul>
+                            <li>Botones de fallo: Hace fallar generadores específicos</li>
+                            <li>Registro de eventos: Historial timestamped de todo lo que pasó</li>
+                            <li>Alertas automáticas: Amarillas (advertencia) o rojas (críticas)</li>
+                            <li>Reset: Limpia todo y restaura el sistema</li>
+                        </ul>
+                    </div>
+
+                    <!-- TAB 3: CARACTERÍSTICAS -->
+                    <div id="tab-caracteristicas" class="tab-pane">
+                        <h3>🎯 Modos de Simulación</h3>
+                        <table class="help-table">
+                            <thead>
+                                <tr>
+                                    <th>Modo</th>
+                                    <th>Generadores</th>
+                                    <th>Carga</th>
+                                    <th>Caso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>⚡ Normal</td>
+                                    <td>2 activos</td>
+                                    <td>850 kW</td>
+                                    <td>Operación estándar</td>
+                                </tr>
+                                <tr>
+                                    <td>🚨 Emergencia</td>
+                                    <td>4 activos</td>
+                                    <td>800 kW</td>
+                                    <td>Máxima disponibilidad</td>
+                                </tr>
+                                <tr>
+                                    <td>📈 Peak Load</td>
+                                    <td>4 activos</td>
+                                    <td>1800 kW</td>
+                                    <td>Alto consumo</td>
+                                </tr>
+                                <tr>
+                                    <td>♻️ Eficiencia</td>
+                                    <td>2 activos</td>
+                                    <td>600 kW</td>
+                                    <td>Mínimo consumo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>📊 Gráficos Real-Time</h3>
+                        <ul>
+                            <li><strong>Línea Azul:</strong> Potencia disponible (kW)</li>
+                            <li><strong>Línea Amarilla:</strong> Carga actual (kW)</li>
+                            <li><strong>Ventana:</strong> Últimos 30 segundos</li>
+                            <li><strong>Actualización:</strong> Cada 2 segundos</li>
+                        </ul>
+
+                        <h3>💾 Exportación</h3>
+                        <p>Descarga un archivo CSV con todos los eventos de la simulación:</p>
+                        <ul>
+                            <li>Timestamp exacto de cada evento</li>
+                            <li>Tipo de evento (info, warning, error)</li>
+                            <li>Descripción del evento</li>
+                            <li>Compatible con Excel, Google Sheets, etc.</li>
+                        </ul>
+                    </div>
+
+                    <!-- TAB 4: CONSEJOS -->
+                    <div id="tab-consejos" class="tab-pane">
+                        <h3>🎮 Escenarios para Probar</h3>
+
+                        <h4>Escenario 1: Cambiar Modos (1 minuto)</h4>
+                        <p>Haz click en cada botón de modo y observa:</p>
+                        <ul>
+                            <li>Cómo cambian los generadores (LEDs verdes/rojos)</li>
+                            <li>Cómo cambia la carga en el sistema</li>
+                            <li>Cómo la barra de carga cambia de color</li>
+                            <li>Cómo el gráfico se actualiza automáticamente</li>
+                        </ul>
+
+                        <h4>Escenario 2: Inyectar Fallos (5 minutos)</h4>
+                        <p>Ve al módulo de Fallos y prueba:</p>
+                        <ol>
+                            <li>Haz click en "Fallar GEN-1" → observa que se desactiva</li>
+                            <li>Haz click en "Fallar GEN-2" → ahora tienes 2 fallos</li>
+                            <li>Mira la alerta roja crítica que aparece</li>
+                            <li>Observa el evento log que se registra</li>
+                            <li>Haz click RESET para limpiar</li>
+                        </ol>
+
+                        <h4>Escenario 3: Peak Load + Fallo (5 minutos)</h4>
+                        <p>La más interesante:</p>
+                        <ol>
+                            <li>Selecciona modo "📈 Peak Load" (carga al máximo)</li>
+                            <li>La barra de carga ya está roja (90%+)</li>
+                            <li>Ahora inyecta un fallo: "Fallar GEN-1"</li>
+                            <li>¡Observa el déficit de energía!</li>
+                            <li>Las alertas aparecen automáticamente</li>
+                        </ol>
+
+                        <h3>💡 Pro Tips</h3>
+                        <ul>
+                            <li><strong>📊 Lee el gráfico:</strong> La línea azul es potencia, amarilla es carga</li>
+                            <li><strong>🔊 Activa sonidos:</strong> Escuchar tonos diferentes es más divertido</li>
+                            <li><strong>⏱️ Espera 2 segundos:</strong> El gráfico se actualiza automáticamente</li>
+                            <li><strong>📝 Revisa el log:</strong> Cada evento queda registrado con timestamp</li>
+                            <li><strong>💾 Exporta datos:</strong> Genera CSV para análisis en Excel</li>
+                            <li><strong>🔄 Experimenta:</strong> No hay límite - puedes fallar y resetear infinitas veces</li>
+                        </ul>
+
+                        <h3>❓ Preguntas Frecuentes</h3>
+                        <ul>
+                            <li><strong>¿Puedo romper algo?</strong> No, todo es virtual. Experimenta sin miedo.</li>
+                            <li><strong>¿Por qué suena un tono?</strong> Es el audio de alerta. Actívalo/desactívalo con el botón 🔊</li>
+                            <li><strong>¿Qué significa el color rojo?</strong> Que la carga supera el 85% (alerta) o hay déficit (crítico)</li>
+                            <li><strong>¿Cómo reseteo todo?</strong> Haz click en el botón RESET en el módulo de Fallos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="modal-close-btn">Entendido, ¡que comience la diversión!</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/electrical-system.js"></script>
+</body>
+</html>

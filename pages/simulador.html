@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simulador Náutico - ElectroShip</title>
+  <link rel="stylesheet" href="/css/simulador.css">
+</head>
+<body>
+  <header class="sim-header">
+    <h1>Simulador Náutico - Circuitos 12/24V DC</h1>
+    <div class="controls">
+      <a class="nav-btn" href="../index.html">Inicio</a>
+      <a class="nav-btn" href="/pages/system.html">Sistema</a>
+      <button id="btn-simulate" class="btn">Encender / Simular</button>
+      <button id="btn-stop" class="btn btn-secondary">Detener</button>
+      <button id="btn-reset" class="btn btn-secondary">Reset</button>
+      <label><input type="checkbox" id="chk-fault-mode"> Modo falla</label>
+      <button id="help-trigger" class="nav-help-btn" title="Mostrar guía">❓ Ayuda</button>
+    </div>
+  </header>
+
+  <main class="sim-main">
+    <aside class="palette">
+      <h2>Paleta</h2>
+      <div class="palette-list">
+        <div class="palette-item" draggable="true" data-type="battery" data-voltage="12">🔋 Batería 12V</div>
+        <div class="palette-item" draggable="true" data-type="resistor" data-value="10">⚫ Resistor 10Ω</div>
+        <div class="palette-item" draggable="true" data-type="bulb" data-value="5">💡 Bombilla</div>
+        <div class="palette-item" draggable="true" data-type="motor" data-value="8">🧲 Motor</div>
+        <div class="palette-item" draggable="true" data-type="switch">🔀 Interruptor</div>
+        <div class="palette-item" draggable="true" data-type="fuse">🔥 Fusible</div>
+        <div class="palette-item" draggable="true" data-type="voltmeter">📐 Voltímetro</div>
+        <div class="palette-item" draggable="true" data-type="ammeter">📏 Amperímetro</div>
+      </div>
+      <p class="small">Arrastra un componente al área de trabajo. Usa los conectores para unir cables (clic en un conector, luego en otro).</p>
+    </aside>
+
+    <section class="workspace" id="workspace">
+      <svg id="wireLayer" class="wire-layer"></svg>
+      <div id="board" class="board" tabindex="0"></div>
+    </section>
+  </main>
+
+  <footer class="sim-footer">
+    <p>ElectroShip - Simulador didáctico básico (12/24V DC)</p>
+  </footer>
+
+  <!-- Modal de ayuda -->
+  <div id="help-modal" class="modal-overlay" style="display:none;">
+    <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <div class="modal-header">
+        <h2 id="help-title">📖 Guía rápida - Simulador Náutico</h2>
+        <button id="modal-close" class="modal-close" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-tab="general">General</button>
+          <button class="tab-btn" data-tab="componentes">Componentes</button>
+          <button class="tab-btn" data-tab="usar">Cómo usar</button>
+        </div>
+
+        <div class="tab-content">
+          <div id="tab-general" class="tab-pane active">
+            <h3>Bienvenido</h3>
+            <p>Este simulador permite construir circuitos DC (12/24V) con componentes básicos. Arrastra elementos desde la paleta al área de trabajo y conéctalos haciendo clic en los conectores.</p>
+            <p>Usa <strong>Encender / Simular</strong> para ejecutar la simulación (solver nodal). Activa <em>Modo falla</em> para permitir que fusibles se quemen cuando la corriente exceda el umbral.</p>
+          </div>
+
+          <div id="tab-componentes" class="tab-pane">
+            <h3>Componentes</h3>
+            <ul>
+              <li><strong>Batería</strong>: Fuente DC (12V por defecto).</li>
+              <li><strong>Resistor / Bombilla / Motor</strong>: cargas con resistencia.</li>
+              <li><strong>Interruptor</strong>: doble clic para abrir/cerrar.</li>
+              <li><strong>Fusible</strong>: doble clic para simular quemado (o quema automática en modo falla).</li>
+              <li><strong>Voltímetro / Amperímetro</strong>: medidores colocables que muestran lecturas tras simular.</li>
+            </ul>
+          </div>
+
+          <div id="tab-usar" class="tab-pane">
+            <h3>Cómo usar</h3>
+            <ol>
+              <li>Arrastra una batería y una carga al tablero.</li>
+              <li>Conecta los conectores con cables (clic en un conector, luego en otro).</li>
+              <li>Coloca medidores si deseas ver voltajes o corrientes.</li>
+              <li>Haz clic en <strong>Encender / Simular</strong> para ver lecturas y estados.</li>
+            </ol>
+            <p>Consejo: si el circuito está abierto o hay un cortocircuito, la simulación mostrará un mensaje explicativo.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="modal-close-btn" class="btn btn-secondary">Entendido</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/js/Simulator.js"></script>
+</body>
+</html>
