@@ -1,10 +1,10 @@
-# ElectroShip ⚡ — Simulador Lógico de Distribución Eléctrica
+# ElectroShip  — Simulador Lógico de Distribución Eléctrica
 
 *Un simulador interactivo profesional de sistemas eléctricos navales con interfaces SCADA*
 
 ---
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Abrir en el Navegador
 ```bash
@@ -24,7 +24,7 @@ Start index.html
 
 ---
 
-## 📦 Características Principales
+## Características Principales
 
 ### 📊 Dashboard Avanzado
 - **Gráficos en Tiempo Real:** Power charts animados (últimos 30 seg)
@@ -32,7 +32,7 @@ Start index.html
 - **Sonidos Inteligentes:** Web Audio API con tonos diferentes por evento
 - **Exportación CSV:** Descarga registro completo de eventos
 
-### ⚡ 4 Módulos Educativos
+###  4 Módulos Educativos
 
 **Módulo 1: Conversor de Unidades**
 - kW ↔ HP (× 1.341) | CV (× 1.360)
@@ -58,7 +58,7 @@ Start index.html
 
 ---
 
-## 🎨 Diseño Profesional
+##  Diseño Profesional
 
 ### Tema Naval SCADA
 - **Colores:** Deep Blue, Electric Blue, Turquoise, Steel Gray
@@ -68,7 +68,7 @@ Start index.html
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 ```
 HTML5
@@ -97,7 +97,7 @@ Chart.js 4.4.0
 ---
 
 
-## 🎯 Casos de Uso
+##  Casos de Uso
 
 ### Educación Técnica
 Enseñar conceptos de distribución eléctrica naval con interactividad
@@ -113,7 +113,7 @@ Exportar eventos para auditoría o análisis posterior
 
 ---
 
-## 💡 Consejos de Uso
+##  Consejos de Uso
 
 1. **Prueba todos los modos:** Cada uno tiene configuración diferente
 2. **Inyecta fallos:** Observa cómo cambia la potencia disponible
@@ -123,7 +123,7 @@ Exportar eventos para auditoría o análisis posterior
 
 ---
 
-## 🔧 Personalización
+## Personalización
 
 ### Cambiar Colores
 Edita `assets/css/styles.css` y `assets/css/system.css`:
@@ -153,29 +153,7 @@ SIMULATION_MODES.miModo = {
 
 ---
 
-## 📊 Especificaciones Técnicas
-
-### Rendimiento
-- ✅ Gráficos actualizados cada 2 segundos
-- ✅ DOM updates instantáneos (< 100ms)
-- ✅ CSS animations (GPU-accelerated)
-- ✅ Memory efficient (Intersection Observer)
-
-### Compatibilidad
-- ✅ Chrome/Edge 89+
-- ✅ Firefox 87+
-- ✅ Safari 14+
-- ✅ Móvil (iOS Safari, Chrome Android)
-
-### Accesibilidad
-- ✅ ARIA labels
-- ✅ Semantic HTML
-- ✅ Keyboard navigation
-- ✅ Alto contraste (WCAG AA)
-
----
-
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 ### El gráfico no aparece
 - Verifica que Chart.js CDN está cargado (conexión a internet)
@@ -193,7 +171,7 @@ SIMULATION_MODES.miModo = {
 
 ---
 
-## 📞 Información de Contacto
+##  Información de Contacto
 
 **Desarrollador:** Isaura Ríos  
 **Proyecto:** ElectroShip - Simulador Lógico de Distribución Eléctrica  
@@ -201,13 +179,13 @@ SIMULATION_MODES.miModo = {
 
 ---
 
-## 📜 Licencia
+##  Licencia
 
 Proyecto educativo de demostración. Uso libre con atribución.
 
 ---
 
-## 🎓 Aprendizajes Incorporados
+##  Aprendizajes Incorporados
 
 Este proyecto demuestra competencias en:
 
